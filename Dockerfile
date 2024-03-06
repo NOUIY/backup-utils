@@ -5,7 +5,7 @@
 # https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 
 # Build layer
-FROM ubuntu:focal AS build
+FROM ubuntu:20.04 AS build
 
 # Install build dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
@@ -47,7 +47,7 @@ RUN make install
 WORKDIR /
 
 # Runtime layer
-FROM ubuntu:focal AS runtime
+FROM ubuntu:20.04 AS runtime
 
 # Install runtime dependencies -  bash, git, OpenSSH 5.6 or newer, and jq v1.5 or newer.
 RUN apt-get update && apt-get install --no-install-recommends -y \
